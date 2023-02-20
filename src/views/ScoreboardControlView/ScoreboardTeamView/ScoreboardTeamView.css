@@ -1,0 +1,21 @@
+
+.teamControl {
+}
+
+.scoreControl {
+    color: gold;
+    font-size: xxx-large;
+    padding: 0 10px 10px 10px;
+}
+
+.foulsControl {
+    font-size: x-large;
+}
+
+.scoreButton {
+    width: 100%;
+}
+
+.foulsControlLabel {
+    font-size: x-small;
+}

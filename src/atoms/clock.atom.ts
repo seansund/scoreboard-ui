@@ -55,7 +55,8 @@ export enum UpdateClockAction {
     ADD_SECOND = 'ADD_SECOND',
     SUBTRACT_SECOND = 'SUBTRACT_SECOND',
     START = 'START',
-    STOP = 'STOP'
+    STOP = 'STOP',
+    RESET = 'RESET'
 }
 
 export const timerAtom = atom(
@@ -96,3 +97,13 @@ export const timerAtom = atom(
 )
 
 export const timerAtomLoadable = loadable(timerAtom)
+
+export const runningTimerAtom = atom(
+    async get => {
+        const currentClock: ClockModel = await get(clockAtom)
+
+        return currentClock.running
+    }
+)
+
+export const runningTimerAtomLoadable = loadable(runningTimerAtom)

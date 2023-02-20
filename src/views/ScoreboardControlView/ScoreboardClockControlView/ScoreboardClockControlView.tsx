@@ -1,13 +1,15 @@
+import React from "react";
+import {Button, Grid} from "@mui/material";
 import {useAtomValue, useSetAtom} from "jotai";
+
+import './ScoreboardClockControlView.css';
 import {
-    periodAtom,
     periodAtomLoadable,
+    runningTimerAtomLoadable,
     timerAtom,
     timerAtomLoadable,
-    UpdateClockAction,
-    UpdatePeriodAction
+    UpdateClockAction
 } from "../../../atoms";
-import {Button} from "@mui/material";
 
 export interface ScoreboardClockControlViewProps {
 }
@@ -16,12 +18,19 @@ export const ScoreboardClockControlView = (props: ScoreboardClockControlViewProp
     const timerLoadable = useAtomValue(timerAtomLoadable)
     const updateTimer = useSetAtom(timerAtom)
 
+    const runningTimerLoadable = useAtomValue(runningTimerAtomLoadable)
+
     const periodLoadable = useAtomValue(periodAtomLoadable)
-    const updatePeriod = useSetAtom(periodAtom)
 
     if (timerLoadable.state === 'loading') {
         return (<div>Loading...</div>)
     } else if (timerLoadable.state === 'hasError') {
+        return (<div>Error</div>)
+    }
+
+    if (runningTimerLoadable.state === 'loading') {
+        return (<div>Loading...</div>)
+    } else if (runningTimerLoadable.state === 'hasError') {
         return (<div>Error</div>)
     }
 
@@ -31,24 +40,26 @@ export const ScoreboardClockControlView = (props: ScoreboardClockControlViewProp
         return (<div>Error</div>)
     }
 
-    return (<div>
-        <div className="clock">{timerLoadable.data}</div>
-        <div>
-            <Button variant="contained" onClick={() => updateTimer(UpdateClockAction.START)}>Start</Button>
-            <Button variant="contained" onClick={() => updateTimer(UpdateClockAction.STOP)}>Stop</Button>
-        </div>
-        <div>
-            <Button variant="contained" onClick={() => updateTimer(UpdateClockAction.ADD_MINUTE)}>+1m</Button>
-            <Button variant="contained" onClick={() => updateTimer(UpdateClockAction.ADD_SECOND)}>+1s</Button>
-        </div>
-        <div>
-            <Button variant="contained" onClick={() => updateTimer(UpdateClockAction.SUBTRACT_MINUTE)}>-1m</Button>
-            <Button variant="contained" onClick={() => updateTimer(UpdateClockAction.SUBTRACT_SECOND)}>-1s</Button>
-        </div>
-        <div>
-            <Button variant="contained" onClick={() => updatePeriod(UpdatePeriodAction.SUBTRACT_PERIOD)}>-</Button>
-            <span>{periodLoadable.data}</span>
-            <Button variant="contained" onClick={() => updatePeriod(UpdatePeriodAction.ADD_PERIOD)}>+</Button>
-        </div>
-    </div>)
+    const running: boolean = runningTimerLoadable.data
+
+    return (<Grid container spacing={2}>
+        <Grid item xs={6}>
+            <Button className="clockButton" variant="contained" color="error" onClick={() => updateTimer(UpdateClockAction.RESET)}>Reset</Button>
+        </Grid>
+        <Grid item xs={6}>
+            <Button className="clockButton" variant="contained" color={running ? "secondary" : "primary"} onClick={() => updateTimer(running ? UpdateClockAction.STOP : UpdateClockAction.START)}>{running ? "Stop" : "Start"}</Button>
+        </Grid>
+        <Grid item xs={6}>
+            <Button className="clockButton" variant="contained" onClick={() => updateTimer(UpdateClockAction.ADD_MINUTE)}>+1 m</Button>
+        </Grid>
+        <Grid item xs={6}>
+            <Button className="clockButton" variant="contained" onClick={() => updateTimer(UpdateClockAction.ADD_SECOND)}>+1 s</Button>
+        </Grid>
+        <Grid item xs={6}>
+            <Button className="clockButton" variant="contained" onClick={() => updateTimer(UpdateClockAction.SUBTRACT_MINUTE)}>-1 m</Button>
+        </Grid>
+        <Grid item xs={6}>
+            <Button className="clockButton" variant="contained" onClick={() => updateTimer(UpdateClockAction.SUBTRACT_SECOND)}>-1 s</Button>
+        </Grid>
+    </Grid>)
 }

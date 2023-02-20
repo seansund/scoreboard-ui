@@ -1,0 +1,13 @@
+
+.clockControl {
+    color: red;
+    font-size: xxx-large;
+}
+
+.periodControl {
+    font-size: x-large;
+}
+
+.periodControlLabel {
+    padding-top: 10px;
+}
