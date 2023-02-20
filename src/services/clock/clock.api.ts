@@ -4,7 +4,7 @@ import {ClockModel} from "../../models";
 
 export abstract class ClockApi {
     abstract get(): Promise<ClockModel>
-    abstract subscribe(): Observable<ClockModel>
+    abstract clockObservable(skipQuery?: boolean): Observable<ClockModel>
     abstract periodAdd(): Promise<ClockModel>
     abstract periodSubtract(): Promise<ClockModel>
     abstract periodSet(period: number): Promise<ClockModel>

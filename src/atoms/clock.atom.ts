@@ -7,7 +7,7 @@ import {asPrettyTime, ClockModel, MinutesSecondsModel, parseMinutesSeconds} from
 
 const service: ClockApi = Container.get(ClockApi)
 
-export const clockAtom = atomWithObservable<ClockModel>(() => service.subscribe())
+export const clockAtom = atomWithObservable<ClockModel>(() => service.clockObservable())
 
 export enum UpdatePeriodAction {
     ADD_PERIOD = 'ADD_PERIOD',

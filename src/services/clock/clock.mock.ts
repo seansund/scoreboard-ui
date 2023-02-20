@@ -28,7 +28,7 @@ export class ClockMock implements ClockApi {
                     const currentClock = this.currentClock
 
                     this.currentClock = (currentClock.time > 0)
-                        ? {time: currentClock.time - 1, period: currentClock.period}
+                        ? {time: currentClock.time - 1, period: currentClock.period, running: this.currentClock.running}
                         : (currentClock.period < 4)
                             ? createInitialClock(8, currentClock.period + 1)
                             : currentClock
@@ -85,7 +85,7 @@ export class ClockMock implements ClockApi {
         return this.subject.getValue()
     }
 
-    subscribe(): Observable<ClockModel> {
+    clockObservable(): Observable<ClockModel> {
         return this.subject;
     }
 

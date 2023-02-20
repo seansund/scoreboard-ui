@@ -38,7 +38,7 @@ export class ScoresMock implements ScoresApi {
         return this.subject.getValue();
     }
 
-    subscribe(): Observable<ScoresModel> {
+    scoreObservable(): Observable<ScoresModel> {
         return this.subject;
     }
 

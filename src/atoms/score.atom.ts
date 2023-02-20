@@ -65,7 +65,7 @@ const updateScore = async (team: TeamIdentifier, update: UpdateScoreAction | str
     }
 }
 
-const baseAtom = atomWithObservable<ScoresModel>(() => service.subscribe())
+const baseAtom = atomWithObservable<ScoresModel>(() => service.scoreObservable())
 
 export const scoreAtom = atom(
     async get => await get(baseAtom),

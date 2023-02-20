@@ -2,6 +2,7 @@
 export interface ClockModel {
     time: number
     period: number
+    running: boolean
 }
 
 export interface MinutesSecondsModel {
@@ -36,7 +37,8 @@ export const combineMinutesSeconds = (value: MinutesSecondsModel): number => {
     return value.minutes * 60 + value.seconds
 }
 
-export const createInitialClock = (minutes: number = 8, period: number = 1) => ({
+export const createInitialClock = (minutes: number = 8, period: number = 1): ClockModel => ({
     time: 60 * minutes,
-    period
+    period,
+    running: false
 })

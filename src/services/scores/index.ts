@@ -1,7 +1,7 @@
 import {Container, Scope} from "typescript-ioc";
 import {ScoresApi} from "./scores.api";
-import {ScoresMock} from "./scores.mock";
+import {ScoresGraphql} from "./scores.graphql";
 
 export * from './scores.api'
 
-Container.bind(ScoresApi).to(ScoresMock).scope(Scope.Singleton)
+Container.bind(ScoresApi).to(ScoresGraphql).scope(Scope.Singleton)
