@@ -85,6 +85,9 @@ export const timerAtom = atom(
             case UpdateClockAction.STOP:
                 await service.stop()
                 break
+            case UpdateClockAction.RESET:
+                await service.reset()
+                break
             default:
                 const result: MinutesSecondsModel | undefined = splitTimeString(update)
 

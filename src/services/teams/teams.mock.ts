@@ -9,7 +9,8 @@ const teams: TeamsModel = {
     away: {
         name: 'Harvest',
         color: 'maroon'
-    }
+    },
+    title: 'Semifinal'
 }
 
 export class TeamsMock implements TeamsApi {

@@ -1,7 +1,24 @@
 
 .clock {
-    color: gold;
+    width: 100%;
+    align-content: center;
+    background-color: black;
+    color: white;
+    padding: 0 2px;
 }
 .period {
     font-size: small;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    background-color: black;
+    color: white;
+}
+.title {
+    font-size: small;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    background-color: black;
+    color: white;
 }

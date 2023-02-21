@@ -2,6 +2,7 @@
 export interface TeamsModel {
     home: TeamModel
     away: TeamModel
+    title: string
 }
 
 export interface TeamModel {
