@@ -4,18 +4,17 @@
     align-content: center;
     background-color: black;
     color: white;
-    padding: 0 2px;
+    padding: 5px 5px;
 }
 .period {
-    font-size: small;
     width: 100%;
     height: 100%;
     align-content: center;
     background-color: black;
     color: white;
+    padding: 5px 5px;
 }
 .title {
-    font-size: small;
     width: 100%;
     height: 100%;
     align-content: center;

@@ -1,0 +1,28 @@
+
+.scoreboard {
+    padding: 5px 0;
+}
+
+.logoColor {
+    width: 100%;
+    height: 100%;
+}
+
+.teamLabel {
+    width: 100%;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.scoreLabel {
+    width: 100%;
+    text-align: right;
+}
+
+.foulLabel {
+    width: 100%;
+    text-align: left;
+    padding-left: 5px;
+    background-color: black;
+    color: white;
+}

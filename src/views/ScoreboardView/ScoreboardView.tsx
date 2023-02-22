@@ -1,17 +1,10 @@
 import React from "react";
 import {useAtomValue} from "jotai";
-import {Box, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 
 import {ScoreboardClockView} from "./ScoreboardClockView";
 import {ScoreboardTeamView} from "./ScoreboardTeamView";
-import {
-    awayScoreAtom,
-    awayTeamAtomLoadable,
-    homeScoreAtom,
-    homeTeamAtomLoadable,
-    periodAtom,
-    timerAtom
-} from "../../atoms";
+import {awayScoreAtom, awayTeamAtomLoadable, homeScoreAtom, homeTeamAtomLoadable} from "../../atoms";
 import {TeamIdentifier, TeamModel, TeamScoreModel} from "../../models";
 import {getTeamFromLoadable} from "../../util";
 
@@ -25,21 +18,19 @@ export const ScoreboardView = (props: ScoreboardViewProps) => {
     const awayTeam: TeamModel = getTeamFromLoadable(useAtomValue(awayTeamAtomLoadable), TeamIdentifier.home)
     const awayScore: TeamScoreModel = useAtomValue(awayScoreAtom)
 
-    return (<Grid container spacing={2} style={{paddingRight: '5px'}}>
-            <Grid item xs={6}>&nbsp;</Grid>
-            <Grid item xs={6}>
+    return (
+        <div style={{backgroundColor: 'black', fontSize: "large", marginRight: '5px'}}>
             <Grid container spacing={2}>
                 <Grid item xs={5}>
-                    <ScoreboardTeamView team={awayTeam} score={awayScore} />
+                    <ScoreboardTeamView team={awayTeam} score={awayScore} teamId={TeamIdentifier.away} />
                 </Grid>
                 <Grid item xs={5}>
-                    <ScoreboardTeamView team={homeTeam} score={homeScore} />
+                    <ScoreboardTeamView team={homeTeam} score={homeScore} teamId={TeamIdentifier.home} />
                 </Grid>
                 <Grid item xs={2}>
                     <ScoreboardClockView />
                 </Grid>
             </Grid>
-            </Grid>
-        </Grid>
+        </div>
     )
 }

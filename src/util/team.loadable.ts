@@ -2,7 +2,7 @@ import {Loadable} from "./loadable";
 import {TeamIdentifier, TeamModel} from "../models";
 
 export const getTeamFromLoadable = (value: Loadable<TeamModel>, teamId: TeamIdentifier): TeamModel => {
-    const defaultColor = teamId === TeamIdentifier.home ? 'white' : 'navy'
+    const defaultColor = teamId === TeamIdentifier.home ? 'white' : 'black'
 
     if (value.state === 'loading') {
         return {name: 'Loading...', color: defaultColor}
